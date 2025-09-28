@@ -42,11 +42,11 @@ def send_rc(ser: serial.Serial, roll=1500, pitch=1500, throttle=1500, yaw=1500, 
     send_msp(ser, 200, payload)  # 200 = MSP_SET_RAW_RC
 
 
-def forward(ser: serial.Serial, speed=100):
+def straight(ser: serial.Serial, speed=100):
     """Bay tiến: tăng pitch."""
     send_rc(ser, pitch=1500 + speed)
 
-def backward(ser: serial.Serial, speed=100):
+def back(ser: serial.Serial, speed=100):
     """Bay lùi: giảm pitch."""
     send_rc(ser, pitch=1500 - speed)
 
@@ -108,7 +108,18 @@ def main (cam, link, ser):
   capture (cam)
   a = os.system (f'curl -X POST -F "image=..." {link}')
   if a:
-    pass
+    if a == "up":
+		up (ser)
+	elif a == "down":
+		down (ser)
+	elif a == "straight":
+		straight (ser)
+	elif a == "back":
+		back (ser)
+	elif a == "left":
+		left (ser)
+	elif a == "right":
+	    right (ser)
   send_rc (ser)
 
 
