@@ -103,7 +103,13 @@ def get_heading(ser: serial.Serial):
     return None
 
 
-
+def main (cam, link, ser):
+  fromm .camera import capture
+  capture (cam)
+  a = os.system (f'curl -X POST -F "image=..." {link}')
+  if a:
+    pass
+  send_rc (ser)
 
 
 
@@ -126,7 +132,7 @@ while True:
 	import sys
 	from .flying import main
 
-	t = threading.Thread(target=main, args = (cam, link))
+	t = threading.Thread(target=main, args = (cam, link, ser))
 	t.start()
 
 	t.join(timeout=5)  # Chờ tối đa 5 giây
