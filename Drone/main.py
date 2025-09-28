@@ -35,7 +35,7 @@ def read_msp(ser: serial.Serial, cmd: int):
 # =====================
 # CONTROL FUNCTIONS
 # =====================
-def send_rc(ser: serial.Serial, roll=1500, pitch=1500, throttle=1000, yaw=1500, aux1=1000, aux2=1000, aux3=1000, aux4=1000):
+def send_rc(ser: serial.Serial, roll=1500, pitch=1500, throttle=1500, yaw=1500, aux1=1000, aux2=1000, aux3=1000, aux4=1000):
     """Gửi giá trị RC channel (1000–2000) tới FC."""
     channels = [roll, pitch, throttle, yaw, aux1, aux2, aux3, aux4]
     payload = b''.join(struct.pack('<H', ch) for ch in channels)
