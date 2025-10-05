@@ -19,7 +19,7 @@ def send_msp(ser: serial.Serial, cmd: int, payload: bytes = b'') -> None:
     crc = checksum(packet)
     ser.write(header + packet + bytes([crc]))
 
-def read_msp(ser: serial.Serial, cmd: int):
+def read_msp(ser: serial.Serial, cmd: int):vvc
     """Gửi request và đọc phản hồi từ FC."""
     send_msp(ser, cmd)
     header = ser.read(3)  # chờ '$M>'
